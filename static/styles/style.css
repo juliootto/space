@@ -102,13 +102,15 @@ table {
 }
 
 .busca__input {
-    align-items: center;
+/*    align-items: center;
     background-color: transparent;
     border: none;
-    font-size: 1rem;
-    height: 24px;
-    padding: 10px;
+    font-size: 1.5rem;
+    height: auto;
+    padding: 26px;
     width: 500px;
+    color: #D9D9D9;
+    vertical-align: middle;*/
 }
 
 .busca__icone {
@@ -117,6 +119,27 @@ table {
     height: 2rem;
 }
 
+.busca__input:-webkit-autofill,
+.busca__input:-webkit-autofill:hover,
+.busca__input:-webkit-autofill:focus,
+.busca__input:-webkit-autofill:active {
+    /* Primeiro, vamos tentar uma sombra maior para cobrir melhor */
+    box-shadow: 0 0 0 500px #041A37 inset !important; /* Ajuste 'white' para a cor de fundo desejada */
+
+    /* Garante a cor de fundo */
+    background-color: #041A37 !important;
+
+    /* Garante a cor do texto */
+    -webkit-text-fill-color: #D9D9D9 !important;
+
+    /* Também importante: transição para evitar flash do estilo padrão */
+    -webkit-transition: background-color 9999s ease-in-out 0s;
+    transition: background-color 9999s ease-in-out 0s;
+    border-radius: 8px;
+
+    /* Se houver uma borda padrão sendo aplicada, pode ser que 'border' precise ser forçado */
+    /*border: 1px solid #ccc !important; /* Mantenha a borda que você usa normalmente */
+}
 .cards {
     width: 100%;
 }

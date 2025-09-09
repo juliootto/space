@@ -106,15 +106,37 @@ table {
     background-color: transparent;
     border: none;
     font-size: 1rem;
-    height: 24px;
-    padding: 10px;
+    padding: 18px;
     width: 500px;
+    color: #D9D9D9;
+    
 }
 
 .busca__icone {
-    cursor: pointer;
+    /*cursor: pointer;
     width: 2rem;
     height: 2rem;
+    background-color: transparent;*/
+}
+
+.busca__input:focus {
+    outline: none;
+    background-color: transparent; /* Altera a cor de fundo */
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra sutil */
+}
+
+.busca__input:-webkit-autofill,
+.busca__input:-webkit-autofill:hover,
+.busca__input:-webkit-autofill:focus,
+.busca__input:-webkit-autofill:active {
+    box-shadow: 0 0 0 1000px transparent inset !important; 
+    background-color: transparent !important;
+    -webkit-text-fill-color: #D9D9D9 !important;
+    
+    /* Adicione esta linha para corrigir o tamanho da fonte */
+    font-size: 1rem !important; /* Ajuste o valor para o tamanho que você usa no seu input */
+    -webkit-transition: background-color 9999s ease-in-out 0s;
+    transition: background-color 9999s ease-in-out 0s;
 }
 
 .cards {
