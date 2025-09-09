@@ -101,6 +101,15 @@ table {
     width: 100%;
 }
 
+.busca__fundo button {
+    background: none;
+    border: none;
+    padding: 0;
+}
+.busca__fundo form {
+    display: flex; /* Transforma o formulário em um contêiner flexível */
+    align-items: center; /* Centraliza os itens verticalmente */
+}
 .busca__input {
     align-items: center;
     background-color: transparent;
@@ -113,10 +122,10 @@ table {
 }
 
 .busca__icone {
-    /*cursor: pointer;
+    cursor: pointer;
     width: 2rem;
     height: 2rem;
-    background-color: transparent;*/
+    background-color: transparent;
 }
 
 .busca__input:focus {
