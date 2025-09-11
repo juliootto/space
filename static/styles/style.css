@@ -101,45 +101,53 @@ table {
     width: 100%;
 }
 
+.busca__fundo button {
+    background: none;
+    border: none;
+    padding: 0;
+}
+.busca__fundo form {
+    display: flex; /* Transforma o formulário em um contêiner flexível */
+    align-items: center; /* Centraliza os itens verticalmente */
+}
 .busca__input {
-/*    align-items: center;
+    align-items: center;
     background-color: transparent;
     border: none;
-    font-size: 1.5rem;
-    height: auto;
-    padding: 26px;
+    font-size: 1rem;
+    padding: 18px;
     width: 500px;
     color: #D9D9D9;
-    vertical-align: middle;*/
+    
 }
 
 .busca__icone {
     cursor: pointer;
     width: 2rem;
     height: 2rem;
+    background-color: transparent;
+}
+
+.busca__input:focus {
+    outline: none;
+    background-color: transparent; /* Altera a cor de fundo */
+    /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra sutil */
 }
 
 .busca__input:-webkit-autofill,
 .busca__input:-webkit-autofill:hover,
 .busca__input:-webkit-autofill:focus,
 .busca__input:-webkit-autofill:active {
-    /* Primeiro, vamos tentar uma sombra maior para cobrir melhor */
-    box-shadow: 0 0 0 500px #041A37 inset !important; /* Ajuste 'white' para a cor de fundo desejada */
-
-    /* Garante a cor de fundo */
-    background-color: #041A37 !important;
-
-    /* Garante a cor do texto */
+    box-shadow: 0 0 0 1000px transparent inset !important; 
+    background-color: transparent !important;
     -webkit-text-fill-color: #D9D9D9 !important;
-
-    /* Também importante: transição para evitar flash do estilo padrão */
+    
+    /* Adicione esta linha para corrigir o tamanho da fonte */
+    font-size: 1rem !important; /* Ajuste o valor para o tamanho que você usa no seu input */
     -webkit-transition: background-color 9999s ease-in-out 0s;
     transition: background-color 9999s ease-in-out 0s;
-    border-radius: 8px;
-
-    /* Se houver uma borda padrão sendo aplicada, pode ser que 'border' precise ser forçado */
-    /*border: 1px solid #ccc !important; /* Mantenha a borda que você usa normalmente */
 }
+
 .cards {
     width: 100%;
 }
@@ -165,11 +173,15 @@ table {
     margin-bottom: 1.5rem;
     position: relative;
     width: 450px;
+    
 }
 
 .card__imagem {
     width: 450px;
     border-radius: 10px 10px 0 0;
+    height: 250px;
+    object-fit: cover;
+    position: relative;
 }
 
 .card__tag {
@@ -184,6 +196,7 @@ table {
     text-align: center;
     top: 20px;
     width: 100px;
+    
 }
 
 .card__info {
@@ -406,7 +419,7 @@ table {
     cursor: pointer;
 }
 
-.tags__tag a {
-    text-decoration: none;
-    color: inherit;
+.tags__a {
+    text-decoration: none ; 
+    color: inherit ;
 }
