@@ -39,10 +39,7 @@ def cadastrar(request):
     form = CadastroForms()
     if request.method == 'POST':
         form = CadastroForms(request.POST)
-        if form.is_valid():
-            if form["senha_1"].value() != form["senha_2"].value():
-                messages.error(request,'As senhas não são iguais')
-                return redirect ('cadastrar')
+        if form.is_valid():         
         
             nome = form.cleaned_data['nome_cadastro']
             email = form.cleaned_data['email']
@@ -58,6 +55,6 @@ def cadastrar(request):
             return redirect('login')
         else:
             messages.error(request,'Erro ao cadastrar usuário')
-            return redirect('cadastrar')
+            return render(request,'usuarios/cadastrar.html',{'form':form})
  
     return render(request,'usuarios/cadastrar.html',{'form':form})
