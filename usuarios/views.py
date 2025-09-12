@@ -9,16 +9,31 @@ Este módulo contém as funções de view para:
 from django.shortcuts import redirect, render
 from usuarios.forms import LoginForm, CadastroForms
 from django.contrib.auth.models import User
-
-
+from django.contrib import auth,messages
 
 # Create your views here.
 def login(request):
-    form = LoginForm()    
+    form = LoginForm() 
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            nome = form.cleaned_data['nome_login']
+            senha = form.cleaned_data['senha']
+            usuario = auth.authenticate(request,username=nome,password=senha)
+            if usuario is not None:
+                auth.login(request,usuario)
+                messages.success(request,'Login realizado com sucesso!')
+                return redirect('index')
+            else:
+                messages.error(request,'Erro ao efetuar login')
+                return redirect('login')
+               
     return render(request,'usuarios/login.html',{'form':form})
 
 def logout(request):
-    return render(request,'usuarios/logout.html')
+    auth.logout(request)
+    messages.success(request,'Logout realizado com sucesso!')
+    return redirect('login')
 
 def cadastrar(request):
     form = CadastroForms()
@@ -26,6 +41,7 @@ def cadastrar(request):
         form = CadastroForms(request.POST)
         if form.is_valid():
             if form["senha_1"].value() != form["senha_2"].value():
+                messages.error(request,'As senhas não são iguais')
                 return redirect ('cadastrar')
         
             nome = form.cleaned_data['nome_cadastro']
@@ -33,12 +49,15 @@ def cadastrar(request):
             senha = form.cleaned_data['senha_1']
             
             if User.objects.filter(username=nome).exists():
+                messages.error(request,'Usuário já cadastrado') 
                 return redirect('cadastrar')
             
             usuario = User.objects.create_user(username=nome,email=email,password=senha)
             usuario.save()
-            
+            messages.success(request,'Usuário cadastrado com sucesso')
             return redirect('login')
         else:
-            form = CadastroForms()
+            messages.error(request,'Erro ao cadastrar usuário')
+            return redirect('cadastrar')
+ 
     return render(request,'usuarios/cadastrar.html',{'form':form})
