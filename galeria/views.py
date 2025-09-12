@@ -1,3 +1,9 @@
+"""
+Módulo de visualizações da aplicação Galeria.
+
+Este módulo contém as funções de visualização (views) para a aplicação Galeria,
+responsáveis por renderizar as páginas web e interagir com o modelo Fotografia.
+"""
 from django.shortcuts import render,get_object_or_404,redirect
 from galeria.models import Fotografia
 from django.contrib import messages
