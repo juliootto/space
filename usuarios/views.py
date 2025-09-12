@@ -31,15 +31,16 @@ def login(request):
     return render(request,'usuarios/login.html',{'form':form})
 
 def logout(request):
-    auth.logout(request)
-    messages.success(request,'Logout realizado com sucesso!')
+    if auth.get_user(request).is_authenticated:
+        auth.logout(request)
+        messages.success(request,'Logout realizado com sucesso!')
     return redirect('login')
 
 def cadastrar(request):
     form = CadastroForms()
     if request.method == 'POST':
         form = CadastroForms(request.POST)
-        if form.is_valid():         
+        if form.is_valid():   
         
             nome = form.cleaned_data['nome_cadastro']
             email = form.cleaned_data['email']
@@ -47,7 +48,7 @@ def cadastrar(request):
             
             if User.objects.filter(username=nome).exists():
                 messages.error(request,'Usuário já cadastrado') 
-                return redirect('cadastrar')
+                return render(request,'usuarios/cadastrar.html',{'form':form})
             
             usuario = User.objects.create_user(username=nome,email=email,password=senha)
             usuario.save()
@@ -55,6 +56,5 @@ def cadastrar(request):
             return redirect('login')
         else:
             messages.error(request,'Erro ao cadastrar usuário')
-            return render(request,'usuarios/cadastrar.html',{'form':form})
- 
+            return render(request,'usuarios/cadastrar.html',{'form':form}) 
     return render(request,'usuarios/cadastrar.html',{'form':form})
