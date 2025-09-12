@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [ 'space.juliootto.online', 
                   'www.space.juliootto.online',
@@ -138,7 +138,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #MEDIA
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/space/media/'
+if DEBUG:
+    MEDIA_URL = '/media/'
+else:
+    MEDIA_URL = '/space/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
