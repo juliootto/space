@@ -640,3 +640,87 @@ table {
         background-position-x: 1rem
     }
 }
+
+@media screen and (max-width: 1024px) {
+    .principal {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-lateral {
+        padding-right: 0;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 2rem;
+    }
+
+    .menu-lateral__navegacao {
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .menu-lateral__navegacao a {
+        margin-bottom: 1rem;
+    }
+
+    .cabecalho {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .cabecalho__busca {
+        width: 100%;
+    }
+
+    .busca__input {
+        width: auto;
+        flex-grow: 1;
+    }
+
+    .cards__lista {
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .galeria {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .populares {
+        margin-left: 0;
+        margin-top: 2rem;
+        width: 100%;
+    }
+
+    .rodape {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .banner__titulo {
+        font-size: 28px;
+        line-height: 36px;
+        top: 40px;
+        left: 20px;
+        width: 80%;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    .card__imagem {
+        width: 100%;
+    }
+
+    .card__tag {
+        left: auto;
+        right: 20px;
+    }
+}
