@@ -69,14 +69,21 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
 ]
 # Provider specific settings
+if DEBUG:
+    GITHUB_CLIENT_ID = str(os.getenv('GITHUB_CLIENT_ID_HML'))
+    GITHUB_CLIENT_SECRET = str(os.getenv('GITHUB_CLIENT_SECRET_HML'))
+else:
+    GITHUB_CLIENT_ID = str(os.getenv('GITHUB_CLIENT_ID_PROD'))
+    GITHUB_CLIENT_SECRET = str(os.getenv('GITHUB_CLIENT_SECRET_PROD'))
+    
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         # For each OAuth based provider, either add a ``SocialApp``
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         'APP': {
-            'client_id': '123',
-            'secret': '456',
+            'client_id': str(os.getenv('GOOGLE_CLIENT_ID')),
+            'secret': str(os.getenv('GOOGLE_CLIENT_SECRET')),
             'key': ''
         }
     },
@@ -85,8 +92,8 @@ SOCIALACCOUNT_PROVIDERS = {
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
         'APP': {
-            'client_id': '123',
-            'secret': '456',
+            'client_id': GITHUB_CLIENT_ID,
+            'secret': GITHUB_CLIENT_SECRET,
             'key': ''
         }
     }
@@ -199,3 +206,4 @@ SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = "none"
 LOGIN_REDIRECT_URL = "/"  # new
 ACCOUNT_LOGOUT_ON_GET = True
+SOCIALACCOUNT_LOGIN_ON_GET = True
