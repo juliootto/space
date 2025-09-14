@@ -145,6 +145,7 @@ table {
     width: auto;
     position: relative;
     margin-bottom: 1.5rem;
+    align-items: center;
 }
 
 .banner__imagem {
@@ -155,9 +156,9 @@ table {
     color: #FFFFFF;
     font-size: 40px;
     width: 350px;
-    line-height: 50px;
+    line-height: 40px;
     position: absolute;
-    top: 80px;
+    top: 45px;
     left: 80px;
 }
 
@@ -182,7 +183,7 @@ table {
 .busca__fundo {
     align-items: center;
     background-color: #041A37;
-    border-radius: 8px;    
+    border-radius: 8px;
     margin: 0 auto;
     width: 100%;
 }
@@ -239,7 +240,12 @@ table {
     -webkit-transition: background-color 9999s ease-in-out 0s;
     transition: background-color 9999s ease-in-out 0s;
 }
-
+.conteudo {
+    padding-right: 0;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 2rem;
+}
 .cards {
     width: 100%;
 }
@@ -405,7 +411,7 @@ table {
 
 .pagina-inicial {
     max-width: 1440px;
-    padding: 1.5rem;
+    padding: 3.5rem;
     margin: 0 auto;
 }
 
@@ -459,6 +465,7 @@ table {
 .principal {
     display: flex;
     justify-content: space-between;
+
 }
 
 .rodape {
@@ -495,6 +502,7 @@ table {
 
 .tags__lista {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .tags__tag {
@@ -505,6 +513,7 @@ table {
     width: 100px;
     text-align: center;
     border: 2px solid transparent;
+    margin: 3px;
 }
 
 .tags__tag:hover {
@@ -635,6 +644,42 @@ table {
     color: #101214
 }
 
+.form-container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    padding: 0 1rem; /* Adiciona um espaçamento nas laterais em telas menores */
+}
+
+.form-container form {
+    width: 80%;
+    max-width: 500px; /* Define uma largura máxima para o formulário */
+}
+
+.form-container label {
+    color: #D9D9D9;
+    margin-bottom: 5px;
+    display: block; /* Garante que a label ocupe a linha toda */
+}
+
+.form-container .col-12 {
+    margin-bottom: 15px; /* Espaçamento entre os campos */
+}
+
+.form-container .btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.form-container .alert {
+    padding: .5rem .8rem;
+    margin-top: .5rem;
+    font-size: 0.9rem;
+}
+
+
 @keyframes progress-bar-stripes {
     0% {
         background-position-x: 1rem
@@ -644,7 +689,7 @@ table {
 @media screen and (max-width: 1024px) {
     .principal {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-end;
     }
 
     .menu-lateral {
@@ -704,11 +749,8 @@ table {
 
 @media screen and (max-width: 768px) {
     .banner__titulo {
-        font-size: 28px;
-        line-height: 36px;
-        top: 40px;
-        left: 20px;
-        width: 80%;
+        font-size: 3vw;
+        line-height: 30px;
     }
 
     .card {
@@ -725,4 +767,3 @@ table {
         right: 20px;
     }
 }
-
