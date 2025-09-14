@@ -1,5 +1,18 @@
 from django import forms   
+from allauth.account.forms import LoginForm
+class SpaceLoginForm(LoginForm):
 
+    def login(self, *args, **kwargs):
+
+        # Add your own processing here.
+
+        # You must return the original result.
+        return super().login(*args, **kwargs)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        
+
+'''
 class LoginForm(forms.Form):
     nome_login = forms.CharField(
         label='Nome de Login',
@@ -23,7 +36,7 @@ class LoginForm(forms.Form):
             }
         )
     )
-
+'''
 class CadastroForms(forms.Form):
     nome_cadastro = forms.CharField(
         label='Nome de Cadastro',

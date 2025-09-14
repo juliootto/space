@@ -7,18 +7,21 @@ Este módulo contém as funções de view para:
 - `cadastrar`: Exibe o formulário de cadastro e processa o registro de novos usuários.
 """
 from django.shortcuts import redirect, render
-from usuarios.forms import LoginForm, CadastroForms
+from usuarios.forms import SpaceLoginForm, CadastroForms
 from django.contrib.auth.models import User
 from django.contrib import auth,messages
+from allauth.account.forms import LoginForm, SignupForm
+
 
 # Create your views here.
 def login(request):
     form = LoginForm() 
     if request.method == 'POST':
-        form = LoginForm(request.POST)
+        form = LoginForm(request.POST,request=request)  
+      
         if form.is_valid():
-            nome = form.cleaned_data['nome_login']
-            senha = form.cleaned_data['senha']
+            nome = form.cleaned_data['login']
+            senha = form.cleaned_data['password']
             usuario = auth.authenticate(request,username=nome,password=senha)
             if usuario is not None:
                 auth.login(request,usuario)
@@ -27,7 +30,7 @@ def login(request):
             else:
                 messages.error(request,'Erro ao efetuar login')
                 return redirect('login')
-               
+             
     return render(request,'usuarios/login.html',{'form':form})
 
 def logout(request):
@@ -37,14 +40,14 @@ def logout(request):
     return redirect('login')
 
 def cadastrar(request):
-    form = CadastroForms()
+    form = SignupForm()
     if request.method == 'POST':
-        form = CadastroForms(request.POST)
+        form = SignupForm(request.POST)
         if form.is_valid():   
         
-            nome = form.cleaned_data['nome_cadastro']
+            nome = form.cleaned_data['username']
             email = form.cleaned_data['email']
-            senha = form.cleaned_data['senha_1']
+            senha = form.cleaned_data['password1']
             
             if User.objects.filter(username=nome).exists():
                 messages.error(request,'Usuário já cadastrado') 
