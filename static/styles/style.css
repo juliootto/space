@@ -494,6 +494,7 @@ table {
     align-items: center;
     color: #D9D9D9;
     font-size: 1.3rem;
+    flex-wrap: wrap;
 }
 
 .tags__titulo {
@@ -702,7 +703,7 @@ table {
     .menu-lateral__navegacao {
         flex-direction: row;
         justify-content: space-around;
-        flex-wrap: wrap;
+            flex-wrap: wrap;
     }
 
     .menu-lateral__navegacao a {
@@ -716,12 +717,15 @@ table {
     }
 
     .cabecalho__busca {
-        width: 100%;
+        width: -webkit-fill-available;
     }
 
     .busca__input {
         width: auto;
         flex-grow: 1;
+        font-size: 3vw;
+        padding-left: 15px;
+        padding-right: 5px;
     }
 
     .cards__lista {
@@ -751,6 +755,8 @@ table {
     .banner__titulo {
         font-size: 3vw;
         line-height: 30px;
+        top: 6px;
+        left: 6px;
     }
 
     .card {
@@ -767,3 +773,8 @@ table {
         right: 20px;
     }
 }
+ @media (max-width: 480px) {
+      .pagina-inicial {
+        padding: 10px; /* Even smaller padding for mobile devices */
+      }
+    }
