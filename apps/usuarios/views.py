@@ -7,18 +7,17 @@ Este módulo contém as funções de view para:
 - `cadastrar`: Exibe o formulário de cadastro e processa o registro de novos usuários.
 """
 from django.shortcuts import redirect, render
-from usuarios.forms import SpaceLoginForm, CadastroForms
 from django.contrib.auth.models import User
 from django.contrib import auth,messages
-from allauth.account.forms import LoginForm, SignupForm
+from allauth.account.forms import LoginForm
+from allauth.account.forms import SignupForm
 
 
 # Create your views here.
 def login(request):
     form = LoginForm() 
     if request.method == 'POST':
-        form = LoginForm(request.POST,request=request)  
-      
+        form = LoginForm(request.POST,request=request)       
         if form.is_valid():
             nome = form.cleaned_data['login']
             senha = form.cleaned_data['password']
@@ -29,8 +28,7 @@ def login(request):
                 return redirect('index')
             else:
                 messages.error(request,'Erro ao efetuar login')
-                return redirect('login')
-             
+                return redirect('login')             
     return render(request,'usuarios/login.html',{'form':form})
 
 def logout(request):

@@ -1,6 +1,13 @@
 {% load static %}
 <header class="cabecalho">
     <img src="{% static '/assets/logo/Logo(2).png' %}" alt="Logo Space" />
+    {% for message in messages %}
+            <div>
+                <p class="alert alert-primary" role="alert" id="message">{{ message }}</p>
+            </div>
+    {% endfor %}
+    {% load account %}
+    <div>{% user_display user %}</div>
     <div class="cabecalho__busca">
         <div class="busca__fundo">
             <form action="{% url 'buscar' %}">

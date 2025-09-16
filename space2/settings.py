@@ -31,10 +31,11 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 DEBUG = True
 
 ALLOWED_HOSTS = [ 
-                 'space.juliootto.online',
-                  'www.space.juliootto.online',
-                  '127.0.0.1',
-                  'localhost']
+                    'space.juliootto.online',
+                    'www.space.juliootto.online',
+                    '127.0.0.1',
+                    'localhost'
+                ]
 
 
 
@@ -51,8 +52,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'django.contrib.sites',
-    'galeria.apps.GaleriaConfig',
-    'usuarios.apps.UsuariosConfig',
+    'apps.galeria.apps.GaleriaConfig',
+    'apps.usuarios.apps.UsuariosConfig',
     'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.google',
 ]
@@ -205,5 +206,8 @@ AUTHENTICATION_BACKENDS = [
 SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = "none"
 LOGIN_REDIRECT_URL = "/"  # new
+ACCOUNT_LOGOUT_REDIRECT_URL  = "/"
+ACCOUNT_SIGNUP_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_ON_GET = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
+LOGIN_URL = '/login'
