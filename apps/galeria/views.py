@@ -9,8 +9,6 @@ from django.contrib.auth.decorators import login_required
 from apps.galeria.models import Fotografia
 from django.contrib import messages
 from apps.galeria.forms import FotografiaForm
-from django.http import request
-
 
 # Create your views here.
 @login_required
