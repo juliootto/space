@@ -31,15 +31,20 @@ class Fotografia(models.Model):
     descricao = models.TextField(null=False, blank=False)
     foto = models.ImageField(upload_to="fotos/%Y/%m/%d/", blank=True)
     categoria = models.CharField(max_length=50, choices=OPCOES_CATEGORIA)
-    publicado = models.BooleanField(default=False)
+    publicado = models.BooleanField(default=True)
     data_fotografia = models.DateTimeField(default=datetime.now, blank=False)
     usuario = models.ForeignKey(
         to=User,
         on_delete=models.SET_NULL,
         null=True,
         blank=False,
-        related_name='user'
+        related_name='user',        
     )
     
     def __str__(self):
         return self.nome
+    
+    def getCategoria(self):
+        opcoes_dict = dict(self.OPCOES_CATEGORIA)
+        return opcoes_dict[self.categoria]
+        
