@@ -16,14 +16,16 @@ Nessa aplicação o usuário pode fazer um cadastro e após o login pode acessar
 
 ## ✨ Funcionalidades Principais
 
-* **Página Inicial:** Galeria dee imagens espaciais o usuário tem que estar logado para acessar.
-* **Login:** Autenticação d um usuário anteriormnt cadastrado.
+* **Página Inicial:** Galeria dee imagens espaciais, onde o usuário tem que estar logado para acessar.
+* **Login:** Autenticação d um usuário anteriormente cadastrado.
 * **Cadastro:** Cadastro de um novo usuário.
 * **Logout:** Logout do usuário autenticado.
 * **Busca:** Sistema de busca de imagens espaciais.
 * **Edição de Fotografias:** Funcionalidade para alterar os detalhes das fotografias.
 * **Exclusão de Fotografias:** Funcionalidade para remover fotografias.
 * **Armazenamento em Nuvem:** Assets e mídias armazenados no Cloudinary.
+* **Login Social:** Opção de login com OAuth2.0 do Google e GitHub.
+
 
 ## 🛠️ Tecnologias Utilizadas
 
