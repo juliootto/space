@@ -33,10 +33,8 @@ class FotografiaForm(forms.ModelForm):
                     'foto': forms.FileInput(attrs={'class': 'form-control'}),
                     'categoria': forms.Select(attrs={'class': 'form-control'}),
                     #'publicado': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
-                    'data_fotografia': forms.DateInput( attrs={'class': 'form-control',
-                                                                'type':'date'},
-                                                        format='%d/%m/%Y'),
+                    'data_fotografia': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
                     'usuario': forms.Select(attrs={'class': 'form-control'}),
                     }
-        input_formats={'data_fotografia': '%d/%m/%Y'}
+        #input_formats={'data_fotografia': ['%d/%m/%Y', '%Y-%m-%d']}
 

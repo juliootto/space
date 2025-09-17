@@ -1,10 +1,35 @@
 {% load static %}
 <section class="menu-lateral">
     <nav class="menu-lateral__navegacao">
-        <a href="{% url 'index' %}"><img src="{% static 'assets/icones/1x/Home - ativo.png' %}"> Home </a>
-        <a href="{% url 'login' %}"><img src="{% static 'assets/icones/1x/Mais vistas - inativo.png' %}"> Login </a>
-        <a href="{% url 'cadastrar' %}"><img src="{% static 'assets/icones/1x/Novas - inativo.png' %}"> Cadastro</a>
-        <a href="{% url 'logout' %}"><img src="{% static 'assets/icones/1x/Surpreenda-me - inativo.png' %}"> Logout</a>
-        <a href="{% url 'nova_imagem' %}"><img src="{% static 'assets/icones/1x/new.png' %}"> Nova Imagem</a>
+            {% if request.resolver_match.view_name == 'index' or request.resolver_match.view_name == 'index_categoria' or request.resolver_match.view_name == 'buscar' %}
+                <a class="menu-lateral__navegacao__ativo" href="{% url 'index' %}"><img src="{% static 'assets/icones/1x/Home - ativo.png' %}"> Home </a>
+            {% else %}
+                <a href="{% url 'index' %}"><img src="{% static 'assets/icones/1x/Home - inativo.png' %}"> Home </a>
+            {% endif %}
+
+            {% if request.resolver_match.view_name == 'login' %}
+                <a class="menu-lateral__navegacao__ativo" href="{% url 'login' %}"><img src="{% static 'assets/icones/1x/Mais vistas - ativo.png' %}"> Login </a>
+            {% else %}
+                <a href="{% url 'login' %}"><img src="{% static 'assets/icones/1x/Mais vistas - inativo.png' %}"> Login </a>
+            {% endif %}
+
+            {% if request.resolver_match.view_name == 'cadastrar' %}
+                <a class="menu-lateral__navegacao__ativo" href="{% url 'cadastrar' %}"><img src="{% static 'assets/icones/1x/Novas - ativo.png' %}"> Cadastro </a>
+            {% else %}
+                <a href="{% url 'cadastrar' %}"><img src="{% static 'assets/icones/1x/Novas - inativo.png' %}"> Cadastro </a>
+            {% endif %}
+
+            {% if request.resolver_match.view_name == 'logout' %}
+                <a class="menu-lateral__navegacao__ativo" href="{% url 'logout' %}"><img src="{% static 'assets/icones/1x/Surpreenda-me - ativo.png' %}"> Logout </a>
+            {% else %}
+                <a href="{% url 'logout' %}"><img src="{% static 'assets/icones/1x/Surpreenda-me - inativo.png' %}"> Logout </a>
+            {% endif %}
+
+            {% if request.resolver_match.view_name == 'nova_imagem' %}
+                <a class="menu-lateral__navegacao__ativo" href="{% url 'nova_imagem' %}"><img src="{% static 'assets/icones/1x/new-ativo.png' %}"> Nova Imagem </a>
+            {% else %}
+                <a href="{% url 'nova_imagem' %}"><img src="{% static 'assets/icones/1x/new-inativo.png' %}"> Nova Imagem </a>
+            {% endif %}
+
     </nav>
 </section>

@@ -159,6 +159,7 @@ LANGUAGE_CODE = 'pt-br'
 TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
+USE_L10N = False
 
 USE_TZ = True
 
@@ -170,7 +171,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticCloudinaryStorage'
+STATICFILES_STORAGE = 'space2.storage.MyStaticCloudinaryStorage'
 
 # MEDIA
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

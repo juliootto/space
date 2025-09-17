@@ -167,6 +167,7 @@ table {
     display: flex;
     justify-content: space-between;
     margin: 1.5rem 0 4rem 0;
+    min-height: 80px;
 }
 
 .cabecalho__busca {
@@ -390,6 +391,7 @@ table {
     flex-direction: column;
 }
 
+
 .menu-lateral__navegacao a {
     font-family: 'Space Grotesk', sans-serif;
     align-items: center;
@@ -400,13 +402,34 @@ table {
     font-size: 24px;
 }
 
-.menu-lateral__navegacao a:first-child {
+.menu-lateral__navegacao a.menu-lateral__navegacao__ativo {
     font-weight: bold;
     color: #7B78E5;
 }
 
 .menu-lateral__navegacao img {
     margin-right: 1.5rem;
+}
+.cabecalho__usuario {
+    background-color: #3e4453; /* Cor de fundo escura */
+    color: #f8f9fa; /* Cor do texto (branco) */
+    padding: 8px 15px; /* Espaçamento interno (vertical e horizontal) */
+    border-radius: 20px; /* Borda arredondada */
+    font-size: 16px; /* Tamanho da fonte */
+    font-weight: 500; /* Peso da fonte */
+    margin: auto 1em auto auto; /* Margem para alinhamento */
+    text-align: center; /* Centraliza o texto */
+}
+
+.cabecalho__usuario_logado {
+    background-color: #5552a5; /* Cor de fundo escura */
+    color: #cdd3d8; /* Cor do texto (branco) */
+    padding: 8px 15px; /* Espaçamento interno (vertical e horizontal) */
+    border-radius: 20px; /* Borda arredondada */
+    font-size: 16px; /* Tamanho da fonte */
+    font-weight: 500; /* Peso da fonte */
+    margin: auto 1em auto auto; /* Margem para alinhamento */
+    text-align: center; /* Centraliza o texto */
 }
 
 .pagina-inicial {
@@ -680,7 +703,13 @@ table {
     font-size: 0.9rem;
 }
 
+.alerta {
+    transition: opacity 0.5s ease-out; /* Define uma transição de 0.5 segundos para a opacidade */
+    }
 
+.alerta.oculto {
+    opacity: 0; /* Opacidade 0 para o elemento sumir */
+    }
 @keyframes progress-bar-stripes {
     0% {
         background-position-x: 1rem

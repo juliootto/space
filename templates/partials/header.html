@@ -1,21 +1,42 @@
 {% load static %}
+{% for message in messages %}
+<div id="alert-message" class="alerta">
+    <p class="alert alert-secondary d-inline-flex p-3" role="alert" id="message">{{ message }}</p>
+</div>
+{% endfor %}
 <header class="cabecalho">
     <img src="{% static 'assets/logo/Logo(2).png' %}" alt="Logo Space" />
-    {% for message in messages %}
-            <div>
-                <p class="alert alert-primary" role="alert" id="message">{{ message }}</p>
-            </div>
-    {% endfor %}
     {% load account %}
-    <div>{% user_display user %}</div>
+    {% if user.is_authenticated %}
+        <div class="cabecalho__usuario_logado">Olá, {{ user.username }}!</div>
+    {% else %}
+        <div class="cabecalho__usuario">Olá, visitante!</div>
+    {% endif %}
     <div class="cabecalho__busca">
         <div class="busca__fundo">
             <form action="{% url 'buscar' %}">
                 <input class="busca__input" type="text" name="buscar" placeholder="O que você procura?">
                 <button type="submit">
-                    <img class="busca__icone" src="{% static 'assets/icones/1x/search.ico' %}" alt="ícone de search">
+                    <img class="busca__icone" src="{% static 'assets/icones/1x/search.png' %}" alt="ícone de search">
                 </button>
             </form>
         </div>
     </div>
 </header>
+
+<script>
+    // Seleciona o elemento com o ID 'alert-message'
+    var alerta = document.getElementById('alert-message');
+    // Se o alerta existir, programa sua remoção após 5 segundos (1000 milissegundos)
+    if (alerta) {
+        // Primeiro, esconde o alerta após 3 segundos
+        setTimeout(() => {
+            alerta.classList.add('oculto'); // Adiciona a classe que anima a opacidade
+        }, 1000); // 1000 milissegundos = 1 segundos
+
+        // Depois, remove o elemento do DOM completamente após a animação (0.5s)
+        setTimeout(() => {
+            alerta.style.display = 'none'; // Alternativa: alerta.remove();
+        }, 1500); // 3500 milissegundos = 1.5 segundos (1s de espera + 0.5s de animação)
+    }
+</script>

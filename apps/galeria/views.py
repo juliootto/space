@@ -53,6 +53,8 @@ def nova_imagem(request):
 @login_required
 def editar_imagem(request,foto_id):
     fotografia = Fotografia.objects.get(id=foto_id)
+    # Adicione a linha abaixo
+    print(f"Valor do banco de dados: {fotografia.data_fotografia}")
     form = FotografiaForm(instance=fotografia)
     if request.method == 'POST':
         form = FotografiaForm(request.POST,request.FILES,instance=fotografia)
