@@ -20,7 +20,10 @@ Nessa aplicação o usuário pode fazer um cadastro e após o login pode acessar
 * **Login:** Autenticação d um usuário anteriormnt cadastrado.
 * **Cadastro:** Cadastro de um novo usuário.
 * **Logout:** Logout do usuário autenticado.
-* **Busca:** Sitma d busca de imagens espaciais.
+* **Busca:** Sistema de busca de imagens espaciais.
+* **Edição de Fotografias:** Funcionalidade para alterar os detalhes das fotografias.
+* **Exclusão de Fotografias:** Funcionalidade para remover fotografias.
+* **Armazenamento em Nuvem:** Assets e mídias armazenados no Cloudinary.
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -87,4 +90,3 @@ Projeto desenvolvido por **Julio Otto**.
 * LinkedIn: [https://www.linkedin.com/in/julio-cezar-otto-junior-b184502/](https://www.linkedin.com/in/julio-cezar-otto-junior-b184502/)
 * GitHub: [https://github.com/juliootto](https://github.com/juliootto)
 * Email: juliootto@gmail.com
-
