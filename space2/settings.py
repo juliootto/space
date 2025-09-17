@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -165,21 +167,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# This is where Django will look for your static files
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, "static"),
 ]
-
-# This is the directory where `collectstatic` will put the files
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticCloudinaryStorage'
 
 # MEDIA
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-if DEBUG:
-    MEDIA_URL = '/media/'
-else:
-    MEDIA_URL = '/space/media/'
-
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -202,7 +198,7 @@ AUTHENTICATION_BACKENDS = [
     
 ]
 
-
+#allauth configuration
 SITE_ID = 1
 ACCOUNT_EMAIL_VERIFICATION = "none"
 LOGIN_REDIRECT_URL = "/"  # new
@@ -211,3 +207,9 @@ ACCOUNT_SIGNUP_REDIRECT_URL = '/'
 ACCOUNT_LOGOUT_ON_GET = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
 LOGIN_URL = '/login'
+
+#cloudinary config
+CLOUDINARY_URL = str(os.getenv('CLOUDINARY_URL'))
+CLOUDINARY_STORAGE = {
+    'RAW_FILES_EXTENSIONS': ['pdf', 'zip', 'ico'],
+}
