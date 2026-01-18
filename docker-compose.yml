@@ -1,0 +1,40 @@
+
+services:
+  # Serviço do Django (space)
+  space:
+    build: ./space
+    # Mantivemos o timeout alto para garantir que o SQLite carregue
+    command: gunicorn space2.wsgi:application --bind 0.0.0.0:8000 --timeout 300
+    volumes:
+      - ./space:/space
+      - static_volume:/space/static
+    expose:
+      - 8000
+    env_file:
+      - ./space/.env
+    # --- AQUI ESTAVA FALTANDO A REDE ---
+    networks:
+      - rede_publica
+
+  # Serviço do Nginx Interno (Opcional, mas deixamos aqui caso precise no futuro)
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-interno
+    restart: always
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - static_volume:/space/static
+    expose:
+      - "80"
+    networks:
+      - rede_publica
+    depends_on:
+      - space
+
+# Configuração da Rede
+networks:
+  rede_publica:
+    external: true
+
+volumes:
+  static_volume:

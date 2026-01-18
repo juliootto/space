@@ -28,13 +28,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [ 
                     'space.juliootto.online',
                     'www.space.juliootto.online',
                     '127.0.0.1',
-                    'localhost'
+                    'localhost',
+                    '192.168.100.42',
+                    'juliootto.dev.br',
+                    'www.juliootto.dev.br',
+                    'space.juliootto.dev.br',
+                    'www.space.juliootto.dev.br',
                 ]
 
 
@@ -214,3 +219,11 @@ CLOUDINARY_URL = str(os.getenv('CLOUDINARY_URL'))
 CLOUDINARY_STORAGE = {
     'RAW_FILES_EXTENSIONS': ['pdf', 'zip', 'ico'],
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://juliootto.dev.br',
+    'https://www.juliootto.dev.br',
+]
+
+# Avisa ao Django que ele está atrás de um Proxy (Cloudflare/Nginx)
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
